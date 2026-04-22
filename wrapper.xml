@@ -1,0 +1,4 @@
+<mujoco>
+  <compiler meshdir="Angad_Full_Assembly_urdf/meshes_decimated/"/>
+  <include file="Angad_Full_Assembly_urdf/Angad_Full_Assembly_mujoco.urdf"/>
+</mujoco>

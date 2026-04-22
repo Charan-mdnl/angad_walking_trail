@@ -1,0 +1,314 @@
+╔════════════════════════════════════════════════════════════════════════╗
+║                                                                        ║
+║                 ANGAD HUMANOID ROBOT WALKING SIMULATION                ║
+║                        Complete File Index                             ║
+║                                                                        ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+DIRECTORY: /home/charan/Documents/Angad_Walking_Sim/
+SIZE: ~13 MB | FILES: 58 | STATUS: ✅ READY TO USE
+
+═════════════════════════════════════════════════════════════════════════
+📚 DOCUMENTATION (Read These First!)
+═════════════════════════════════════════════════════════════════════════
+
+  1. QUICKSTART.md
+     └─ Complete step-by-step guide with examples
+     └─ Configuration instructions
+     └─ Troubleshooting guide
+     └─ START HERE if you're new! ⭐
+
+  2. COMMANDS.md  
+     └─ Quick reference for all commands
+     └─ Configuration quick reference
+     └─ Output interpretation
+     └─ Experiment ideas
+
+  3. README_WALKING.md
+     └─ Technical deep-dive into robot control
+     └─ Hardware specifications
+     └─ Control architecture details
+     └─ Advanced topics
+
+  4. INDEX.txt (This file)
+     └─ Directory structure reference
+
+═════════════════════════════════════════════════════════════════════════
+🚀 MAIN SIMULATION SCRIPTS (Run these!)
+═════════════════════════════════════════════════════════════════════════
+
+  1. robot_walking_simulator.py ⭐ (RECOMMENDED)
+     └─ Complete walking demonstration
+     └─ Stand → Crouch → Walk sequence
+     └─ Fully customizable (edit lines 13-17)
+     └─ USAGE: python3 robot_walking_simulator.py
+     └─ TIME: 30 seconds default
+
+  2. angad_walk.py (BASIC)
+     └─ Simple standing controller
+     └─ LIPM-based balance
+     └─ Most stable and tested
+     └─ USAGE: python3 angad_walk.py
+     └─ TIME: Runs indefinitely (press ESC to close)
+
+  3. angad_progressive_walk.py (ADVANCED)
+     └─ Advanced progressive walking
+     └─ Better gait dynamics
+     └─ USAGE: python3 angad_progressive_walk.py
+     └─ TIME: 20-30 seconds
+
+  4. angad_lipm_walking_v1.py (VARIANT)
+     └─ Alternative LIPM-based walking v1
+     └─ Different control parameters
+     └─ USAGE: python3 angad_lipm_walking_v1.py
+
+═════════════════════════════════════════════════════════════════════════
+⚙️ SETUP & VERIFICATION SCRIPTS
+═════════════════════════════════════════════════════════════════════════
+
+  setup_check.py
+  └─ Verifies all dependencies installed
+  └─ Tests MuJoCo model loading
+  └─ Confirms all files present
+  └─ USAGE: python3 setup_check.py
+  └─ TIME: 3-5 seconds
+  └─ RUN THIS FIRST if you encounter issues
+
+═════════════════════════════════════════════════════════════════════════
+🤖 ROBOT MODEL FILES (Physics & Geometry)
+═════════════════════════════════════════════════════════════════════════
+
+  1. XP_robot_with_actuators.xml ⭐ (PRIMARY MODEL)
+     └─ Main MuJoCo robot model
+     └─ 21 actuated joints with real gear ratios
+     └─ Referenced by all walking scripts
+     └─ SIZE: 25 KB
+
+  2. XP_robot_with_limits.xml
+     └─ Alternative model with strict joint limits
+     └─ More physically conservative
+     └─ SIZE: 24 KB
+
+  3. wrapper.xml
+     └─ Alternative model wrapper
+     └─ SIZE: 163 bytes
+
+  4. Angad_Full_Assembly_urdf/
+     └─ URDF format models (for reference/conversion)
+     └─ Angad_Full_Assembly.urdf (31 KB)
+     └─ Angad_Full_Assembly_mujoco.urdf (31 KB)
+     └─ compiled_angad.xml (13 KB)
+     └─ 25+ STL mesh files for visualization
+     └─ TOTAL SIZE: 6.7 MB
+
+═════════════════════════════════════════════════════════════════════════
+🎨 3D VISUALIZATION (Meshes)
+═════════════════════════════════════════════════════════════════════════
+
+  meshes/ (PRIMARY)
+  └─ 21 STL mesh files for real-time visualization
+  └─ bicep_l.stl, bicep_r.stl (244 KB each)
+  └─ forearm_l.stl, forearm_r.stl (108 KB each)
+  └─ foot_l.stl, foot_r.stl (67 KB each)
+  └─ hip_pitch_l.stl, hip_pitch_r.stl (140 KB each)
+  └─ hip_roll_l.stl, hip_roll_r.stl (277 KB each)
+  └─ leg_shank_l.stl, leg_shank_r.stl (353 KB each)
+  └─ pelvis.stl (456 KB)
+  └─ shoulder_pitch_l.stl, shoulder_pitch_r.stl (118 KB each)
+  └─ shoulder_roll_l.stl, shoulder_roll_r.stl (131 KB each)
+  └─ thigh_l.stl, thigh_r.stl (190 KB each)
+  └─ torso.stl (2.2 MB - largest!)
+  └─ uj_l.stl, uj_r.stl (252 KB each)
+  └─ TOTAL SIZE: 6.3 MB
+
+  Angad_Full_Assembly_urdf/meshes/ & meshes_decimated/
+  └─ Alternative/simplified mesh versions
+  └─ Can be used for faster simulation if needed
+
+═════════════════════════════════════════════════════════════════════════
+🔧 UTILITY & SUPPORT FILES
+═════════════════════════════════════════════════════════════════════════
+
+  1. my_mjc_func_python.py
+     └─ Low-level MuJoCo helper functions
+     └─ Used by walking scripts
+     └─ SIZE: 36 KB
+
+  2. venky_supp_funcs.py
+     └─ High-level support utilities
+     └─ Control functions and helpers
+     └─ SIZE: 36 KB
+
+  3. pd_control.py
+     └─ PD (Proportional-Derivative) control implementation
+     └─ Used for joint control
+     └─ SIZE: 2.0 KB
+
+═════════════════════════════════════════════════════════════════════════
+📊 QUICK STATS
+═════════════════════════════════════════════════════════════════════════
+
+  Robot Specifications:
+  ├─ Total bodies: 23
+  ├─ Total actuators: 21
+  ├─ Total joints: 22
+  ├─ Control frequency: 60 Hz
+  ├─ Simulation time step: ~16.67 ms
+  └─ Physics engine: MuJoCo
+
+  Actuator Details:
+  ├─ Hip joints: 4 (2 pitch + 2 roll)
+  ├─ Thigh joints: 2
+  ├─ Knee joints: 2
+  ├─ Ankle joints: 4 (2 pitch + 2 roll)
+  ├─ Arm joints: 3 per side
+  └─ Torso joints: 1
+
+  Stiffness Values:
+  ├─ Knee Kp: 1500 Nm/rad (120:1 gear ratio)
+  ├─ Hip Kp: 1000 Nm/rad (50:1 gear ratio)
+  ├─ Ankle Kp: 500 Nm/rad (17:1 gear ratio)
+  └─ All values matched to real hardware
+
+═════════════════════════════════════════════════════════════════════════
+🎯 HOW TO USE THIS DIRECTORY
+═════════════════════════════════════════════════════════════════════════
+
+  STEP 1: Verify Setup (First Time)
+  └─ Run: python3 setup_check.py
+  └─ Should see: ✓ All checks passed!
+
+  STEP 2: Test Basic Standing
+  └─ Run: python3 angad_walk.py
+  └─ Should see: Robot standing, minimal jitter
+  └─ Window: 3D robot with balancing motion
+  └─ Exit: Press ESC
+
+  STEP 3: Test Full Walking
+  └─ Run: python3 robot_walking_simulator.py
+  └─ Should see: Stand → Crouch → Walk
+  └─ Console: X position increasing over time
+  └─ Duration: ~30 seconds
+
+  STEP 4: Customize
+  └─ Edit: robot_walking_simulator.py (lines 13-17)
+  └─ Change: LEAN_ANGLE, WALKING_STEPS, etc.
+  └─ Run: python3 robot_walking_simulator.py
+  └─ Observe: Different walking behaviors
+
+═════════════════════════════════════════════════════════════════════════
+📂 DIRECTORY TREE
+═════════════════════════════════════════════════════════════════════════
+
+Angad_Walking_Sim/
+├── 📄 QUICKSTART.md                 (Complete guide - START HERE!)
+├── 📄 COMMANDS.md                   (Quick reference & commands)
+├── 📄 README_WALKING.md             (Technical documentation)
+├── 📄 INDEX.txt                     (This file)
+│
+├── 🚀 robot_walking_simulator.py    (MAIN - Full walking demo)
+├── 🚀 angad_walk.py                 (Simple standing)
+├── 🚀 angad_progressive_walk.py     (Advanced walking)
+├── 🚀 angad_lipm_walking_v1.py      (LIPM variant)
+│
+├── 🔧 setup_check.py                (Verification script)
+│
+├── 🤖 XP_robot_with_actuators.xml   (Main robot model ⭐)
+├── 🤖 XP_robot_with_limits.xml      (Alternative model)
+├── 🤖 wrapper.xml
+│
+├── 📦 Angad_Full_Assembly_urdf/     (URDF models + meshes)
+│   ├── Angad_Full_Assembly.urdf
+│   ├── Angad_Full_Assembly_mujoco.urdf
+│   ├── compiled_angad.xml
+│   ├── 25+ STL mesh files
+│   ├── meshes/
+│   └── meshes_decimated/
+│
+├── 🎨 meshes/                       (21 visualization meshes)
+│   ├── bicep_l.stl, bicep_r.stl
+│   ├── foot_l.stl, foot_r.stl
+│   ├── forearm_l.stl, forearm_r.stl
+│   ├── hip_pitch_l.stl, hip_pitch_r.stl
+│   ├── hip_roll_l.stl, hip_roll_r.stl
+│   ├── leg_shank_l.stl, leg_shank_r.stl
+│   ├── pelvis.stl
+│   ├── shoulder_pitch_l.stl, shoulder_pitch_r.stl
+│   ├── shoulder_roll_l.stl, shoulder_roll_r.stl
+│   ├── thigh_l.stl, thigh_r.stl
+│   ├── torso.stl
+│   ├── uj_l.stl, uj_r.stl
+│
+├── 🔧 my_mjc_func_python.py         (MuJoCo helpers)
+├── 🔧 venky_supp_funcs.py           (Support utilities)
+└── 🔧 pd_control.py                 (PD control)
+
+═════════════════════════════════════════════════════════════════════════
+⚡ QUICK START COPY-PASTE COMMANDS
+═════════════════════════════════════════════════════════════════════════
+
+# Navigate to the directory
+cd /home/charan/Documents/Angad_Walking_Sim
+
+# Verify setup (run first if any issues)
+python3 setup_check.py
+
+# Test 1: Basic standing (most stable)
+python3 angad_walk.py
+
+# Test 2: Full walking demo (recommended)
+python3 robot_walking_simulator.py
+
+# Test 3: Advanced walking variant
+python3 angad_progressive_walk.py
+
+═════════════════════════════════════════════════════════════════════════
+✅ STATUS: READY TO USE
+═════════════════════════════════════════════════════════════════════════
+
+All files have been verified:
+✓ Robot model loads successfully (23 bodies, 21 actuators)
+✓ All mesh files present (21 visualization files)
+✓ All Python dependencies installed (MuJoCo, NumPy)
+✓ Control scripts ready to execute
+✓ Documentation complete
+
+═════════════════════════════════════════════════════════════════════════
+🔐 IMPORTANT NOTES
+═════════════════════════════════════════════════════════════════════════
+
+1. ORIGINAL FILES UNTOUCHED
+   • Source: /home/charan/Documents/Angad_with_limits/
+   • All original files remain unchanged
+   • This is a complete copy for your experiments
+
+2. SAFE TO MODIFY
+   • Everything in this directory can be modified
+   • Experiment freely without affecting originals
+   • Create backups before major changes
+
+3. DEPENDENCIES
+   • Requires: Python 3.8+
+   • Requires: MuJoCo (pip install mujoco)
+   • Requires: NumPy (pip install numpy)
+
+4. KEYBOARD CONTROLS
+   • Drag mouse: Rotate view
+   • Scroll wheel: Zoom
+   • Space: Play/pause
+   • Right-click: Apply force/perturbation
+   • ESC: Close viewer
+
+═════════════════════════════════════════════════════════════════════════
+
+Created: April 22, 2026
+Robot: Angad Humanoid (XP-Robotics)
+Simulator: MuJoCo Physics Engine
+Status: ✅ Fully Operational
+
+═════════════════════════════════════════════════════════════════════════
+
+Questions? See QUICKSTART.md or COMMANDS.md!
+Ready to simulate? Run: python3 robot_walking_simulator.py
+
+═════════════════════════════════════════════════════════════════════════
