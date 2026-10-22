@@ -20,8 +20,8 @@ import mujoco.viewer
 # ===== CONFIGURATION =====
 RUNNING_MODE = "walk"  # Options: "stand", "crouch", "walk"
 WALKING_SPEED = 0.3    # Forward velocity (m/s)
-WALKING_STEPS = 10     # Number of walking steps to perform
-SIMULATION_TIME = 30   # Total simulation time (seconds)
+WALKING_STEPS = 0      # Number of walking steps to perform (0 = unlimited)
+SIMULATION_TIME = 125  # Total simulation time (seconds) - 2 minutes of walking
 
 # ===== LOAD ROBOT MODEL =====
 print("[INFO] Loading MuJoCo robot model...")
@@ -70,25 +70,25 @@ for i, name in enumerate(act_names):
 current_target = base_target.copy()
 
 # ===== BALANCE PARAMETERS =====
-BAL_PITCH_KP = 2000.0
-BAL_PITCH_KD = 300.0
-BAL_ROLL_KP = 1500.0
-BAL_ROLL_KD = 200.0
+BAL_PITCH_KP = 5000.0  # Very high for stability
+BAL_PITCH_KD = 500.0   # High damping
+BAL_ROLL_KP = 4000.0   # Very high for stability
+BAL_ROLL_KD = 400.0    # High damping
 alpha = 0.1
 fp, fr = 0.0, 0.0
 
 # ===== CROUCH PARAMETERS =====
-CROUCH_KNEE = -0.30
-CROUCH_HIP = +0.15
-CROUCH_ANKLE = +0.15
+CROUCH_KNEE = -0.02   # Almost no crouch - just tiny bend
+CROUCH_HIP = +0.01    # Minimal hip movement
+CROUCH_ANKLE = +0.01  # Minimal ankle movement
 
 # ===== WALKING PARAMETERS =====
-LEAN_ANGLE = 0.035
-KNEE_LIFT = 0.10
-HIP_SWING = 0.03
-SHIFT_TIME = 2.0
-SWING_TIME = 1.5
-SETTLE_TIME = 1.0
+LEAN_ANGLE = 0.005    # Minimal lean
+KNEE_LIFT = 0.02      # Tiny knee lift
+HIP_SWING = 0.008     # Tiny hip swing
+SHIFT_TIME = 4.0      # Very long weight shift
+SWING_TIME = 3.0      # Very long swing
+SETTLE_TIME = 2.0     # Very long settle
 
 # ===== STATE MANAGEMENT =====
 class WalkingState:
@@ -178,15 +178,15 @@ def controller(m, d):
             target = base_target.copy()
             
     elif RUNNING_MODE == "walk":
-        # Phase 1: Stand (0-2s)
-        if elapsed_state < 2.0:
+        # Phase 1: Stand (0-3s)
+        if elapsed_state < 3.0:
             state = WalkingState.STANDING
             target = base_target.copy()
-            
-        # Phase 2: Crouch (2-5s)
-        elif elapsed_state < 5.0:
+
+        # Phase 2: Crouch/Bend (3-18s) - Very long for ultra-smooth transition
+        elif elapsed_state < 18.0:
             state = WalkingState.CROUCHING
-            progress = smooth_step(elapsed_state - 2.0, 3.0)
+            progress = smooth_step(elapsed_state - 3.0, 15.0)
             target = base_target.copy()
             for idx in L_knee + R_knee:
                 target[idx] = base_target[idx] + progress * (CROUCH_KNEE - base_target[idx])
@@ -195,10 +195,10 @@ def controller(m, d):
             for idx in L_ankle_pitch + R_ankle_pitch:
                 target[idx] = base_target[idx] + progress * (CROUCH_ANKLE - base_target[idx])
                 
-        # Phase 3: Walk (5s+)
+        # Phase 3: Walk (18s+)
         else:
             state = WalkingState.WALKING
-            time_in_walk = elapsed_state - 5.0
+            time_in_walk = elapsed_state - 18.0
             
             # Stop after a certain number of steps
             if WALKING_STEPS > 0:
